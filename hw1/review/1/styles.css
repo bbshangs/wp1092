@@ -1,0 +1,165 @@
+body {
+    /* text-align: center; */
+    width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 20px 20px;
+    /* background-color: white; */
+}
+
+body::after {
+    content: "";
+    background: url("./Background.webp");;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;   
+}
+
+h1 {
+    margin: 0;
+    padding: 20px 0;
+    color: #9f000d;
+}
+
+.preamble{
+    text-align: center;
+    margin:0px auto;
+    background-color: rgb(247, 250, 76);
+    border: 3px black ;
+}
+
+.whole{
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-color: black;
+    border-width: 0px 1px;
+}
+
+.Player{
+    margin:0px auto;
+    position: relative;
+    background-image: url("./images/player_image.jfif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 1px;
+    width: 600px;
+    height: 700px;
+}
+.hoverInfo{
+    opacity: 0;
+    position: absolute;
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,.3);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 40px;
+}
+.hoverInfo:hover{
+    -webkit-transition: 500ms;
+    opacity: 1;
+}
+.hoverInfo img{
+    position: absolute;
+    top: 200px;
+    right : 0px;
+    display: block;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.Play_button{
+    position: absolute;
+    top: 400px;
+    right : 200px;
+    background-image: url("./images/play_button.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    width: 200px;
+    height: 100px;
+    text-align: center;
+}
+.Next{
+    position: absolute;
+    top: 425px;
+    right : 100px;
+    background-image: url("./images/next_button.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+}
+.previous{
+    position: absolute;
+    top: 425px;
+    right : 425px;
+    background-image: url("./images/previous_button.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+}
+.Preview_Picture{
+    position: absolute;
+    top: 0px;
+    right : 0px;
+    background-image: url("./images/pizza.jpg");
+    background-size: 600px 300px;
+    background-repeat: no-repeat;
+    display: block;
+    width: 600px;
+    height: 300px;
+    text-align: center;
+}
+.Info{
+    position: absolute;
+    top: 300px;
+    left : 0px;
+    display: block;
+    width: 600px;
+    height: 50px;
+    text-align: center;
+    
+}
+.repeat img{
+    position: absolute;
+    bottom: 120px;
+    left : 170px;
+    display: block;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+}
+
+.setting img{
+    position: absolute;
+    bottom: 140px;
+    right : 190px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+.Info img{
+    position: absolute;
+    top: 8px;
+    right : 0px;
+    display: block;
+    width: 100%;
+    height: 150px;
+    text-align: center;
+}
+
