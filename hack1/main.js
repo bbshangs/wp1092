@@ -1,43 +1,62 @@
 // TODO:
-
-const comment_input_box = document.getElementById("comment-input-box");
-const comment_input = document.getElementById("comment-input");
-const comment_button = document.getElementById("comment-button");
-const cancel_button = document.getElementById("cancel-button");
+var comment_input_box = document.getElementById("comment-input-box");
+var comment_input = document.getElementById("comment-input");
+var comment_button = document.getElementById("comment-button");
+var cancel_button = document.getElementById("cancel-button");
+var comment_num = document.getElementById("comment-num");
 
 // change button color if there is input
 comment_input.addEventListener('input', evt => {
-	if (comment_input.value == "") {
+	if (comment_input.value.trim() == "") {
+		console.log("disabled");
 		comment_button.style.backgroundColor = "#cccccc";
-		comment_button.style.disabled = "true";
+		comment_button.setAttribute('disabled', 'disabled');
 	}
 	else {
+		console.log("enabled");
 		comment_button.style.backgroundColor = "#065fd4";
-		comment_button.style.disabled = "false";
+		comment_button.removeAttribute('disabled');
 	}
 });
 
+
+var comment_group = document.getElementById("comment-group");
+var num = 1;
 // click on comment button
-// comment_button.addEventListener('click', evt => {
-// 	var comment = createElement("div");
-// 	var img = createElement("img");
-// 	var comment_right = createElement("div");
-// 	var comment_info = createElement("div");
-// 	comment_input.value = "";
-// 	comment_button.style.backgroundColor = "#cccccc";
-// });
+comment_button.addEventListener('click', evt => {
+	var comment = document.createElement("div");
+	var img = document.createElement("img");
+	var comment_right = document.createElement("div");
+	var comment_info = document.createElement("div");
+	var name = document.createElement("span");
+	var time = document.createElement("span");
+	var p = document.createElement("p");
 
+	comment.className = "comment";
+	img.className = "comment-img";
+	img.src = "images/user-icon.jpg";
+	comment_right.className = "comment-right";
+	name.className = "comment-name";
+	name.textContent = "Toby Chen ";
+	time.className = "comment-time";
+	time.textContent = "現在";
+	p.className = "comment-text";
+	p.textContent = comment_input.value.trim();
 
-// <div class="comment">
-// 	<img class="comment-img" src="images/user-icon.jpg"/>
-// 	<div class="comment-right">
-// 	    <div>
-// 	        <span class="comment-name">Toby Chen</span>
-// 	        <span class="comment-time">現在</span>
-// 	    </div>
-// 	    <p class="comment-text">I am Toby Chen. This is a comment.</p>
-// 	</div>
-// </div>
+	comment_info.appendChild(name);
+	comment_info.appendChild(time);
+	comment_right.appendChild(comment_info);
+	comment_right.appendChild(p);
+	comment.appendChild(img);
+	comment.appendChild(comment_right);
+	comment_group.appendChild(comment);
+	num = num + 1;
+	comment_num.textContent = num + "則留言";
+
+	comment_input.value = "";
+	comment_button.style.backgroundColor = "#cccccc";
+	comment_button.setAttribute('disabled', 'disabled');
+});
 
 //show cancel and comment button after clicking input box
 comment_input_box.addEventListener('click', evt => {
