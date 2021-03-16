@@ -8,12 +8,12 @@ var comment_num = document.getElementById("comment-num");
 // change button color if there is input
 comment_input.addEventListener('input', evt => {
 	if (comment_input.value.trim() == "") {
-		console.log("disabled");
+		// console.log("disabled");
 		comment_button.style.backgroundColor = "#cccccc";
 		comment_button.setAttribute('disabled', 'disabled');
 	}
 	else {
-		console.log("enabled");
+		// console.log("enabled");
 		comment_button.style.backgroundColor = "#065fd4";
 		comment_button.removeAttribute('disabled');
 	}
