@@ -9,18 +9,23 @@ const cancel_button = document.getElementById("cancel-button");
 comment_input.addEventListener('input', evt => {
 	if (comment_input.value == "") {
 		comment_button.style.backgroundColor = "#cccccc";
+		comment_button.style.disabled = "true";
 	}
 	else {
 		comment_button.style.backgroundColor = "#065fd4";
+		comment_button.style.disabled = "false";
 	}
 });
 
 // click on comment button
-comment_button.addEventListener('click', evt => {
-
-	comment_input.value = "";
-	comment_button.style.backgroundColor = "#cccccc";
-});
+// comment_button.addEventListener('click', evt => {
+// 	var comment = createElement("div");
+// 	var img = createElement("img");
+// 	var comment_right = createElement("div");
+// 	var comment_info = createElement("div");
+// 	comment_input.value = "";
+// 	comment_button.style.backgroundColor = "#cccccc";
+// });
 
 
 // <div class="comment">
