@@ -69,4 +69,7 @@ comment_input_box.addEventListener('click', evt => {
 cancel_button.addEventListener('click', evt => {
 	comment_button.style.display = "none";
 	cancel_button.style.display = "none";
+	comment_input.value = "";
+	comment_button.style.backgroundColor = "#cccccc";
+	comment_button.setAttribute('disabled', 'disabled');
 })
