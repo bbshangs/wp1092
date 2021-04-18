@@ -4,8 +4,8 @@ import HeaderRow from "../components/HeaderRow";
 import Table from "../components/Table";
 
 export default function FakeSheet() {
-    const [colNum, setColNum] = useState(10); //26
-    const [rowNum, setRowNum] = useState(10); //100
+    const [colNum, setColNum] = useState(26); //26
+    const [rowNum, setRowNum] = useState(100); //100
     const initialData = [...Array(rowNum)].map(e => Array(colNum).fill(""));
     const [data, setData] = useState(initialData);
     const [selectedCol, setSelectedCol] = useState(null);
@@ -97,7 +97,6 @@ export default function FakeSheet() {
         const modifiedData = data;
         modifiedData[row][col] = value;
         setData(modifiedData);
-        console.log("(updateData) data = ", data);
     }
 
     return (

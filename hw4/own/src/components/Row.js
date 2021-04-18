@@ -8,6 +8,7 @@ export default function Row(props) {
     for (let i = 0; i < props.colNum; i++) {
         uid = [props.uid, i];
         value = props.data[props.curRow][i];
+
         cells.push(
             <Cell 
                 key={uid}
