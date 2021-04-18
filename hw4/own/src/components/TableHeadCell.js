@@ -11,7 +11,6 @@ export default function TableHeadCell(props) {
         curTableHead = "";
     }
     else {
-        // curTableHead = String.fromCharCode(props.curTableHead + 64);
         curTableHead = idOf(props.curTableHead - 1);
     }
 
