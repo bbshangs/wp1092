@@ -24,7 +24,6 @@ export default function Table(props) {
                 curRow={i}
                 colNum={props.colNum}
                 rowNum={props.rowNum}    
-                // rowData={props.data[i]}
                 data={props.data}
                 uid={i}
                 selectedCol={props.selectedCol}

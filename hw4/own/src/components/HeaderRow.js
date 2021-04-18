@@ -2,11 +2,9 @@ import React from 'react';
 
 export default function HeaderRow(props) {
     const handleAddColumn = () => {
-        // props.updataSelectedCell(, );
         props.handleAddColumn();
     };
     const handleDelColumn = () => {
-        // props.updataSelectedCell(, );
         props.handleDelColumn();
     };
 

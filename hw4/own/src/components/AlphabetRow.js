@@ -6,7 +6,6 @@ export default function AlphabetRow(props) {
         cells.push(
             <Cell 
                 value={props.rowData[i] || ""}
-                // value={"hi"}
             />
         );
     }
