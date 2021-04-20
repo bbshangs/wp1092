@@ -12,15 +12,15 @@ export default function Board2048 (props) {
         props.initializeBoard();
     }
     var id;
-    // console.log(props.gameover);
     if (props.gameover || props.win) {
         boardClassName += " game-over-board";
         infoClassName += " game-over-wrapper";
-        if (props.gameover)
+        if (props.gameover) 
             sentence = outSentence;
+        
         else    
             sentence = phdSentence;
-        
+        infoClassName += " end-fade-in";
     }
 
     
