@@ -260,9 +260,9 @@ function MergeSchool() {
                 setBest_qs_ranking(qsRankNow);
             }
 
-            // if (checkWin(nextBoardSetWithRandom.board)) {
-            //     setWin(true);
-            // }
+            if (checkWin(nextBoardSetWithRandom.board)) {
+                setWin(true);
+            }
             if (checkGameover(nextBoardSetWithRandom.board)) {
                 setGameover(true);
             }
