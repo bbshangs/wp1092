@@ -73,6 +73,8 @@ function MergeSchool() {
         setBoard(boardset.board);
         setStep(0);
         setQs_ranking(32768);
+        setGameover(false);
+        setWin(false);
     }
 
     
@@ -204,11 +206,9 @@ function MergeSchool() {
     const moveGrid = (direction) => {
         if (!gameover) {
             if (direction === 'right') {
-                // console.log(board);
-                // console.log(rotateClockwise(board));
-                // console.log(rotateCounterClockwise(board));
                 const nextBoard = moveRight(board);
                 checkAndUpdateAfterMove(nextBoard);
+                // checkGameover(nextBoard);
             } 
             // #########################
             // # 8 Implement yourself
@@ -216,14 +216,17 @@ function MergeSchool() {
             else if (direction === "left") {
                 const nextBoard = moveLeft(board);
                 checkAndUpdateAfterMove(nextBoard);
+                // checkGameover(nextBoard);
             }
             else if (direction === "up") {
                 const nextBoard = moveUp(board);
                 checkAndUpdateAfterMove(nextBoard);
+                // checkGameover(nextBoard);
             }
             else if (direction === "down") {
                 const nextBoard = moveDown(board);
                 checkAndUpdateAfterMove(nextBoard);
+                // checkGameover(nextBoard);
             }
         } 
     }
@@ -257,9 +260,14 @@ function MergeSchool() {
                 setBest_qs_ranking(qsRankNow);
             }
 
+            // if (checkWin(nextBoardSetWithRandom.board)) {
+            //     setWin(true);
+            // }
             if (checkGameover(nextBoardSetWithRandom.board)) {
                 setGameover(true);
             }
+            
+                
         }
     }
     
@@ -268,8 +276,9 @@ function MergeSchool() {
         // #########################
         // # 9 Implement yourself
         // #########################
-        
-        return false;
+        if (justifyMove(board, moveRight(board).board) || justifyMove(board, moveLeft(board).board) || justifyMove(board, moveDown(board).board) || justifyMove(board, moveUp(board).board))
+            return false;
+        return true;
     }
 
     // Check if it is win
@@ -277,15 +286,21 @@ function MergeSchool() {
         // #########################
         // # 10 Implement yourself
         // #########################
+        for (let i = 0; i < board.length; i++) {
+            for (let j = 0; j < board[i].length; j++) {
+                if (board[i][j] === 65536)
+                    return true;
+            }
+        }
         return false;
     }
     
     const handleKeyDown = (event) => {
         event.preventDefault();
-        console.log(board);
-        console.log(rotateClockwise(board));
-        console.log(rotateClockwise(rotateClockwise(board)));
-        console.log(rotateCounterClockwise(board));
+        // console.log(board);
+        // console.log(rotateClockwise(board));
+        // console.log(rotateClockwise(rotateClockwise(board)));
+        // console.log(rotateCounterClockwise(board));
         if (event.keyCode === 39) {
             moveGrid("right");
             // console.log(board);
@@ -295,7 +310,6 @@ function MergeSchool() {
         // #########################
         else if (event.keyCode === 37) {
             moveGrid("left");
-            // console.log(board);
         } 
         else if (event.keyCode === 38) {
             moveGrid("up");
@@ -340,7 +354,7 @@ function MergeSchool() {
     return (
         <>      
             <Header step={step} qs_ranking={qs_ranking} best_qs_ranking={best_qs_ranking} initializeBoard={initializeBoard}/>
-            <Board2048 className="wrapper" board={board} />
+            <Board2048 className="wrapper" board={board} gameover={gameover} win={win} initializeBoard={initializeBoard}/>
             <div className="btn-groups">
                 <div className="btn-useful" id="badend-btn" onClick={setBadEnd}>BadEnd</div>
                 <div className="btn-useful" id="goodend-btn" onClick={setGoodEnd}>GoodEnd</div>

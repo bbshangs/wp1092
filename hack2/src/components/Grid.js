@@ -8,7 +8,6 @@ export default function Grid (props) {
     let value_id = `value-${props.row_idx}-${props.col_idx}`;
     let value = props.value;
     let temp_class_name = `grid level-${value}`;
-    console.log(value_id);
 
     if (value === 0) {
         value = "";
