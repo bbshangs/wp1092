@@ -52,6 +52,8 @@ function MergeSchool() {
         // #########################
         // # 8 Implement yourself
         // #########################
+        for (let i = 0; i < 3; i++)
+            matrix = rotateClockwise(matrix);
         return matrix;
     }
 
@@ -63,10 +65,14 @@ function MergeSchool() {
                      [0,0,0,0]];
         let boardset = putGridRandom(board, true);
         boardset = putGridRandom(boardset.board, true);
+        
         // #########################
         // # 7 Add something yourself
         // boardset.board will be the initial board, please use it directly
         // #########################
+        setBoard(boardset.board);
+        setStep(0);
+        setQs_ranking(32768);
     }
 
     
@@ -151,6 +157,11 @@ function MergeSchool() {
 
         let board = prevBoard;
         let combination =  0;
+
+        board = rotateClockwise(board);
+        const x = moveRight(board);
+        board = rotateCounterClockwise(x.board);
+        combination = x.combination;
     
         return {board, combination};
     }
@@ -163,6 +174,11 @@ function MergeSchool() {
 
         let board = prevBoard;
         let combination =  0;
+
+        board = rotateCounterClockwise(board);
+        const x = moveRight(board);
+        board = rotateClockwise(x.board);
+        combination = x.combination;
     
         return {board, combination};
     }
@@ -175,7 +191,12 @@ function MergeSchool() {
 
         let board = prevBoard;
         let combination =  0;
-    
+        
+        board = rotateClockwise(rotateClockwise(board));
+        const x = moveRight(board);
+        board = rotateCounterClockwise(rotateCounterClockwise(x.board));
+        combination = x.combination;
+        
         return {board, combination};
     }
     
@@ -183,12 +204,27 @@ function MergeSchool() {
     const moveGrid = (direction) => {
         if (!gameover) {
             if (direction === 'right') {
+                // console.log(board);
+                // console.log(rotateClockwise(board));
+                // console.log(rotateCounterClockwise(board));
                 const nextBoard = moveRight(board);
                 checkAndUpdateAfterMove(nextBoard);
             } 
             // #########################
             // # 8 Implement yourself
             // #########################
+            else if (direction === "left") {
+                const nextBoard = moveLeft(board);
+                checkAndUpdateAfterMove(nextBoard);
+            }
+            else if (direction === "up") {
+                const nextBoard = moveUp(board);
+                checkAndUpdateAfterMove(nextBoard);
+            }
+            else if (direction === "down") {
+                const nextBoard = moveDown(board);
+                checkAndUpdateAfterMove(nextBoard);
+            }
         } 
     }
 
@@ -202,10 +238,14 @@ function MergeSchool() {
             // #########################
             // # 4 Implement yourself
             // #########################
+            stepNow++;
 
             // #########################
             // # 5 Implement yourself
             // #########################
+            if (nextBoard.combination > 0)
+                qsRankNow--;
+
             setBoard(nextBoardSetWithRandom.board);
             setQs_ranking(qsRankNow);
             setStep(stepNow);
@@ -213,6 +253,9 @@ function MergeSchool() {
             // #########################
             // # 7 Implement yourself
             // #########################
+            if (qsRankNow < best_qs_ranking) {
+                setBest_qs_ranking(qsRankNow);
+            }
 
             if (checkGameover(nextBoardSetWithRandom.board)) {
                 setGameover(true);
@@ -239,20 +282,41 @@ function MergeSchool() {
     
     const handleKeyDown = (event) => {
         event.preventDefault();
+        console.log(board);
+        console.log(rotateClockwise(board));
+        console.log(rotateClockwise(rotateClockwise(board)));
+        console.log(rotateCounterClockwise(board));
         if (event.keyCode === 39) {
             moveGrid("right");
+            // console.log(board);
         } 
         // #########################
         // # 8 Implement yourself
         // #########################
-
+        else if (event.keyCode === 37) {
+            moveGrid("left");
+            // console.log(board);
+        } 
+        else if (event.keyCode === 38) {
+            moveGrid("up");
+        } 
+        else if (event.keyCode === 40) {
+            moveGrid("down");
+        } 
     }
     
     // #########################
     // # 4 Implement yourself
     // You might need something to capture keyboard input
     // #########################
-    
+    const body = document.querySelector('body');
+    body.onkeydown = (e) => {
+        e = e || window.event;
+        // if (e.key === "ArrowRight") {
+        //     console.log("right");
+        // }
+        handleKeyDown(e);
+    }
     
     // Useful function for you to check the endgame
     const setBadEnd = () => {
@@ -275,7 +339,7 @@ function MergeSchool() {
 
     return (
         <>      
-            <Header />
+            <Header step={step} qs_ranking={qs_ranking} best_qs_ranking={best_qs_ranking} initializeBoard={initializeBoard}/>
             <Board2048 className="wrapper" board={board} />
             <div className="btn-groups">
                 <div className="btn-useful" id="badend-btn" onClick={setBadEnd}>BadEnd</div>
