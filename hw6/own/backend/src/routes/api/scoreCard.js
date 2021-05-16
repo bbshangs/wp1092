@@ -48,9 +48,9 @@ router.post('/query', async function (req, res) {
     const queryString = req.body.queryString;
     var result = [];
     if (queryType === "name") 
-      result = await ScoreCard.find({ "name": queryString});
+      result = await ScoreCard.find({ "name": queryString}).sort({ "score": -1 });
     else if (queryType === "subject")
-      result = await ScoreCard.find({ "subject": queryString});
+      result = await ScoreCard.find({ "subject": queryString}).sort({ "score": -1 });;
     
     if (result.length === 0) 
       res.json({ message: `${queryType.toUpperCase()} (${queryString}) not found!` })
