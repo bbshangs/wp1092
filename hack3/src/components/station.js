@@ -4,8 +4,8 @@ function Station(props) {
   const stationId = props.stationId
   const stationName = props.stationName
   const stationType = props.stationType
+  const stationOrder = props.stationOrder
 
-  
   const nameId = `s-${stationId}`
   const lineId = `l-${stationId}`
   var recName = "station-rectangle"
@@ -29,15 +29,28 @@ function Station(props) {
       break;
   }
 
-  console.log("nameId = ", nameId)
-  console.log("lineId = ", lineId)
+  var last = false
+  if (stationOrder === 1) {
+    recName += ' end'
+  } 
+  else if (stationOrder === 10 && stationType === "R") {
+    recName += ' end' 
+    last = true
+  }
+  else if (stationOrder === 11 && stationType === "G") {
+    recName += ' end'
+    last = true
+  }
+     
+  const line = last ? "":<div id={lineId} className={lineName}></div> 
+
   return (
     <div className="station-line-container">
-      <div id={nameId} className="station-and-name"> {/* you should add both id and onClick to attributes */}
+      <div id={nameId} className="station-and-name" > {/* you should add both id and onClick to attributes */}
         <div className={recName}>{stationId}</div>
         <div className="station-name">{stationName}</div>
       </div>
-      <div id={lineId} className={lineName}></div> {/* you should add both id to attributes */}
+      {line}
     </div>
   )
 }

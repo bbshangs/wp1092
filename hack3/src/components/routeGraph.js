@@ -11,6 +11,7 @@ function RouteGraph(props) {
         stationId={data[i].station_id}
         stationName = {data[i].station_name}
         stationType = {data[i].station_type}
+        stationOrder = {data[i].station_order}
       />
     )
   }

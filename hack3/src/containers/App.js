@@ -57,7 +57,6 @@ function App() {
       </div>
     )
   }
-  
 
   return (
     <div className="wrapper">
