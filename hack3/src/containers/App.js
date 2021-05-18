@@ -32,8 +32,8 @@ function App() {
     const {
       data: {message, data}
     } = await instance.get('/getStations')
-    console.log(message)
-    console.log(data)
+    // console.log(message)
+    // console.log(data)
     setData(data)
   }
 

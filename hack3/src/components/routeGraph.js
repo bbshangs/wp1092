@@ -9,6 +9,8 @@ function RouteGraph(props) {
     stations.push(
       <Station
         stationId={data[i].station_id}
+        stationName = {data[i].station_name}
+        stationType = {data[i].station_type}
       />
     )
   }
