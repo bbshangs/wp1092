@@ -1,0 +1,1 @@
+export { STATCOUNT_QUERY } from './queries';
