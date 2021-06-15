@@ -1,13 +1,7 @@
 import { useState } from 'react';
 import papaparse from 'papaparse';
-// import { useMutation } from '@apollo/react-hooks';
 
 import "./Uploader.css"
-
-// import {
-//     STATCOUNT_QUERY,
-// } from '../graphql';
-
 
 export default function Uploader(props) {
 
@@ -46,8 +40,10 @@ export default function Uploader(props) {
                     const tidyData = tidyCSV(results.data); 
                     setRawData(results.data);
 
+                    console.log("tidy = ", tidyData)
                     // onSubmit is called here, console.log(tidyData) to see how it's structured
                     onSubmitData(tidyData);
+                    
                 }
             });
         } catch (err) {
@@ -59,7 +55,18 @@ export default function Uploader(props) {
     const { mutation } = props;
     // TODO 
     // write an onSubmitData that calls the mutation function 
-    const onSubmitData = () => {}
+    console.log("props = ", props)
+    const onSubmitData = (tidyData) => {
+        for (var i = 0; i < tidyData.length; i++)
+        mutation({
+            variables: {
+                ssn: tidyData[i].ssn,
+                name: tidyData[i].name,
+                location: tidyData[i].location,
+                severity: tidyData[i].severity
+            },
+        })
+    }
 
     // DO NOT MODIFY BELOW THIS LINE 
     const headers = rawData.length > 0 ? Object.keys(rawData[0]) : [];
