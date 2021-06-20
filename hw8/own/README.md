@@ -1,4 +1,9 @@
-# HW8 
+# HW8
+##
+- 啟動server
+	- 在own目錄底下：yarn server
+- 啟動client
+	- 在own目錄底下：yarn start
 ## 完成的進階功能
 - 處理錯誤資訊
     - 未輸入名字就按 “Sign In”
