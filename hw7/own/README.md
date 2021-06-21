@@ -1,4 +1,4 @@
-# HW8
+# HW7
 ## 啟動server與client
 - 啟動server
 	- 在own目錄底下：yarn server
