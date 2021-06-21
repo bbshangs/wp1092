@@ -1,0 +1,15 @@
+{
+  "name": "own",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "cd frontend && yarn start",
+    "server": "cd backend && yarn server"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "antd": "^4.16.2",
+    "graphql-yoga": "^1.18.3"
+  }
+}
