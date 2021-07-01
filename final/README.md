@@ -24,7 +24,7 @@ a欠b五十塊錢，但是b又欠c五十塊錢，則其實只要由a還給c五�
 - 連結: http://3.139.86.20:3000/
 - 說明：一開始在登入頁面輸入名字以及房間名，房間有創建與進入兩個選項，若房間已經存在則不能創建，反之不存在則無法進入。進入房間後，可以看到房間中有哪些成員，以及點擊 All records 以及 My records 可以分別看到整個房間的所有紀錄以及只顯示跟使用者有相關的紀錄。All records 的上方分別有 Add record, Balance, 以及 Clear all record的選項，點 Balance 選項則可以看到經過簡化後使用者應該給誰錢或跟誰收錢，而帳都結清了之後就可以點 Clear all record 的選項。
 
-## 使用與參考之框架/模組/原始碼/第三方套件：
+## 使用與參考之框架/模組/原始碼/第三方套件
 - Frontend：React.js, React-hooks, Antd
 - Backend : Node.js, dontev-defaults,  Mongoose, Websocket, express, nodemon
 
