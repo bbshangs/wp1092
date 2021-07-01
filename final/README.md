@@ -1,15 +1,53 @@
-# WP Final Project
+# [109-2] Web Programming Final
+## 主題: 
+(Group 46) 輕鬆分帳小幫手
+
 ## 組員
 - B07902006 林則仰
 - B07902009 尚沂瑾
+
+## Demo 影片：
+- 連結: https://drive.google.com/file/d/1nFKeUgmeSHkOtT97k1OuD-uhXapuegZV/view?usp=sharing
+
+## 服務內容：
+與三五好友一同出遊時，常常會出現先幫忙買單或是先墊住宿費或是交通費的情況，而在旅程結束時就往往會出現因為有大量互相墊錢而導致錢分得不清楚的情形。然而，出遊的朋友之間常常會有人相當在意錢算不清不楚的狀況，相信大家都不希望因為這樣傷害彼此的感情。因此我們想要設計一個出遊分帳的小幫手，讓彼此在分帳上不但每一筆都記得一清二楚，也能夠將這些複雜的分帳紀錄盡可能的簡單化，希望大家出遊完都能開開心心不要當氣氛大師！
+
+而至於所謂的簡單化，舉個例子：
+
+a欠b五十塊錢，但是b又欠c五十塊錢，則其實只要由a還給c五十塊錢就好。實際生活中，在一群好友分錢時的確常常會想這麼做，但人一多又容易被這樣複雜的關係搞得頭昏腦脹，而我們則會將精簡後的數字直接呈現在畫面上，省去這些瑣碎的煩惱。假設房間有 n 個人，這樣做的好處是能夠將轉移錢的次數由 n(n-1)/2 次降到 n-1 次！這項服務也很適合用於：
+
+- 住在同個宿舍的室友們紀錄生活開銷
+- 身邊有經常一起吃午晚餐的朋友，但總有人不帶錢包所以需要有人墊錢的情形。
+- 有經常開桌的麻將局的朋友們，方便過一段時間後再將錢結清。
+
+## Deployed：
+- 連結: http://3.139.86.20:3000/
+- 說明：一開始在登入頁面輸入名字以及房間名，房間有創建與進入兩個選項，若房間已經存在則不能創建，反之不存在則無法進入。進入房間後，可以看到房間中有哪些成員，以及點擊 All records 以及 My records 可以分別看到整個房間的所有紀錄以及只顯示跟使用者有相關的紀錄。All records 的上方分別有 Add record, Balance, 以及 Clear all record的選項，點 Balance 選項則可以看到經過簡化後使用者應該給誰錢或跟誰收錢，而帳都結清了之後就可以點 Clear all record 的選項。
+
+## 使用與參考之框架/模組/原始碼/第三方套件：
+- Frontend：React.js, React-hooks, Antd
+- Backend : Node.js, dontev-defaults,  Mongoose, Websocket, express, nodemon
+
+## 心得
+- B07902006 林則仰：之前和朋友出遊的時候因為大家都比較隨性，導致最後算錢的時候算的亂七八糟，因此這次的專題馬上就想到了可以實作這樣的系統。這次的專題中我大部分負責的是後端的部分，實際上自己整個刻一遍才發現有很多小細節是之前考試或作業練習時沒有注意到的，所以花了很多時間查資料，可以說是一邊做一邊學到很多東西。比較可惜的是，原本因為想構建一個等價圖的關係而想用graph的相關演算法處理（將借款關係以flow的形式表達），網路上也確實有類似問題的研究，可以reduce成min-cost flow problem，又或者是分解為subset sum problem（NP-hard），不過研究了很久後發現小弟太菜沒能參透QQ，而且對使用者來說其實沒有太大幫助，因此選擇較簡單實作的方法處理。這次專題讓我更了解到網路服務領域的全端應用，而且與隊友在討論的過程中也交流了很多不同的想法跟知識，一起解決前後端的bug真的很有成就感，也很感謝我的隊友幫我把大部分前端的部分都處理的好好的，讓我可以很放心地做好後端的工作。
+- B07902009 尚沂瑾：在 finale project 當中，我主要負責前端，UI 的部分我有利用到許多 antd 所提供的 resource，真正自己實作過後，覺得它非常好用。以往寫作業都有老師提供的 sample code 作為基礎，然而這次我們要從零開始，起初覺得有點困難，不知如何下手，但在多方查詢資料、自己的鑽研之後，對於「寫網頁」這塊便有了更深的認識與了解。
+
 ## 安裝與測試步驟
-- 進入 frontend directory
-    - `yarn install`
-    - `yarn add antd`
-- 進入 backend directory
-    - `yarn install`
-    - `yarn add -D dotenv-defaults express mongoose nodemon ws`
-    - 自行增加 `.env` file 作為後端資料庫
+- 安裝
+    - 進入 wp1092/final/frontend directory
+        - `yarn install`
+        - `yarn add antd`
+    - 進入 wp1092/final/backend directory
+        - `yarn install`
+        - `yarn add -D dotenv-defaults express mongoose nodemon ws`
+        - `npm install uuid` (optional)
+        - 自行增加 `.env` file 作為後端資料庫
+- 測試
+    - 啟動 frontend：開新視窗進入 wp1092/final/
+        - `yarn start`
+    - 啟動 backend：開新視窗進入 wp1092/final/
+        - `yarn server`
+
 ## 分工
 - B07902006 林則仰：後端撰寫
 - B07902009 尚沂瑾：前端撰寫
